@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Empty content no longer causes a null pointer exception in the sectionize rule
+- Typographer content appearing prior to a footnote in an inline block is now appropriately replaced
 
 ## [1.0.1] - 2025-04-08
 
