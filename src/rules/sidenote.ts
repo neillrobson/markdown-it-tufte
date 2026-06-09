@@ -279,6 +279,11 @@ export default function footnote_plugin(md: MarkdownIt) {
 
           const newInline = new state.Token("inline", "", 0)
           newInline.children = token.children.splice(0, refIdx + 1)
+          newInline.content = newInline.children.reduce(
+            (acc, { content }) => acc + content,
+            ""
+          )
+          token.content = token.children.reduce((acc, { content }) => acc + content, "")
           const openSpan = new state.Token("span_open", "span", 1)
           openSpan.attrSet("class", margin ? "marginnote" : "sidenote")
 
