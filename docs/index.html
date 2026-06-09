@@ -38,7 +38,7 @@ Each "new thought" and second-level heading automatically gets a section break a
 
 ## Sidenotes and Marginalia
 
-Here's where things really get exciting. Markdown footnotes[^foots] are a convenient way to move digressions and asides out of the primary flow of a document, but shoving them to the bottom of a long page is no good, either.
+Here's where things really get exciting... Markdown footnotes[^foots] are a convenient way to move digressions and asides out of the primary flow of a document---but shoving them to the bottom of a long page is no good, either.
 
 [^foots]: [Footnotes](https://www.markdownguide.org/extended-syntax#footnotes) weren't actually part of the original markdown spec, but they've become a popular bolt-on.
 
@@ -74,7 +74,7 @@ A full-width image can be achieved with the `.fullwidth` class on the figure tag
       inputText.onchange = handleChange
       function handleChange(e) {
         const text = window
-          .markdownit()
+          .markdownit({ typographer: true })
           .use(window.markdownitTufte)
           .use(window.markdownItAttrs)
           .render(e.target.value)
