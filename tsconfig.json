@@ -6,7 +6,7 @@
     "esModuleInterop": true,
     "noImplicitAny": true,
     "strict": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "sourceMap": true,
     // outDir is overridden from the build:esm/build:cjs scripts
     "outDir": "dist",
