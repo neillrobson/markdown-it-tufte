@@ -93,6 +93,13 @@ Additionally, certain elements will trigger a section break: specifically, **sec
 
 The markup generated for `h2`s and `.newthought`s also includes an **empty anchor tag**, with a URL fragment link directed at that element/section. These anchors, while invisible by default, can be styled to add "copy link" buttons to those section headers.
 
+> [!CAUTION]
+> The generation of header anchors with user-specified hrefs opens the potential for DOM clobbering attacks. If this plugin is used in a **live-preview, client-side** context, any output should be run through client-side sanitization before rendering it.
+>
+> If the same user is both drafting documents with this plugin and publishing them (e.g. as part of a personal blog), there is no security concern. The HTML output will not contain malicious elements unless the author wished to explicitly craft them.
+>
+> More information can be found [here](https://github.com/neillrobson/markdown-it-tufte/issues/1).
+
 Example input and output:
 
 ```markdown
@@ -185,7 +192,7 @@ npm test
 **Building**:
 
 ```
-npm build
+npm run build
 ```
 
 **Publishing**:
