@@ -25,6 +25,8 @@ function sectionize(state: StateCore) {
   const slugs: Record<string, boolean> = {}
   const toProcess: Array<{ slug: string; anchor: Token; target: Token }> = []
 
+  if (state.tokens.length === 0) return
+
   // Iterate backwards since we're splicing elements into the array
   for (let i = state.tokens.length - 1; i >= 0; i--) {
     const token = state.tokens[i]
