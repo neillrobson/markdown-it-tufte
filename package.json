@@ -1,6 +1,6 @@
 {
   "name": "markdown-it-tufte",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A markdown-it plugin for creating documents compatible with Tufte CSS.",
   "author": "Neill Robson",
   "homepage": "https://github.com/neillrobson/markdown-it-tufte",
