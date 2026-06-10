@@ -10,6 +10,7 @@
     "sourceMap": true,
     // outDir is overridden from the build:esm/build:cjs scripts
     "outDir": "dist",
+    "rootDir": "src",
     "baseUrl": "src",
     "paths": {
       "*": ["node_modules/*"]
