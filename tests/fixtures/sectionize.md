@@ -8,7 +8,7 @@ I used *multiple* paragraphs.
 <p>Hi. This is some <strong>content</strong>.</p>
 <p>I used <em>multiple</em> paragraphs.</p>
 </section>
-.
+..
 
 Separates sections based on h2 tags
 .
@@ -32,7 +32,7 @@ Sometimes in different sections.
 </div>
 <p>Sometimes in different sections.</p>
 </section>
-.
+..
 
 Separates sections based on newthought
 .
@@ -49,7 +49,7 @@ Now the earth was formless and empty, as is the story when it is filled with vac
 <section>
 <p><span class="newthought" id="emma-woodhouse%2C-handsome%2C-clever%2C-and-rich%2C"><a class="no-tufte-underline" href="#emma-woodhouse%2C-handsome%2C-clever%2C-and-rich%2C"></a>Emma Woodhouse, handsome, clever, and rich,</span> with a comfortable home and happy disposition, seemed to unite some of the best blessings of existence.</p>
 </section>
-.
+..
 
 Creates unique slugs
 .
@@ -78,4 +78,9 @@ but different content haha.
 <section>
 <p><span class="newthought" id="identical-heading-2"><a class="no-tufte-underline" href="#identical-heading-2"></a>Identical heading</span>, as it turns out, works okay.</p>
 </section>
+..
+
+Handles empty content gracefully
 .
+.
+..

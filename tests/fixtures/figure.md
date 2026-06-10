@@ -11,7 +11,7 @@ Paragraph after
 <figure><img src="/image.png" alt="alt text"></figure>
 <p>Paragraph after</p>
 </section>
-.
+..
 
 Image with caption
 .
@@ -28,7 +28,7 @@ Paragraph after
 </figure>
 <p>Paragraph after</p>
 </section>
-.
+..
 
 Captures standalone images inside other blocks
 .
@@ -51,7 +51,7 @@ Paragraph after
 </blockquote>
 <p>Paragraph after</p>
 </section>
-.
+..
 
 Leaves images elsewhere in a paragraph alone
 .
@@ -66,4 +66,4 @@ Paragraph after
 <p>Text <img src="/image.png" alt="alt text"> and more</p>
 <p>Paragraph after</p>
 </section>
-.
+..
