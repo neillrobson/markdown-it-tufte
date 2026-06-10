@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+Nothing at this time.
+
+## [1.0.2] - 2026-06-10
+
 ### Fixed
 
 - Empty content no longer causes a null pointer exception in the sectionize rule
@@ -53,7 +57,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Each second-level heading will trigger a section split immediately above it
   - Each paragraph starting with a new-thought will trigger a section split immediately above it
 
-[Unreleased]: https://github.com/neillrobson/markdown-it-tufte/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/neillrobson/markdown-it-tufte/compare/v1.0.2...HEAD
+[1.0.2]: https://github.com/neillrobson/markdown-it-tufte/releases/tag/v1.0.2
 [1.0.1]: https://github.com/neillrobson/markdown-it-tufte/releases/tag/v1.0.1
 [1.0.0]: https://github.com/neillrobson/markdown-it-tufte/releases/tag/v1.0.0
 [0.3.0]: https://github.com/neillrobson/markdown-it-tufte/releases/tag/v0.3.0
