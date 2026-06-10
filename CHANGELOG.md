@@ -7,7 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-Nothing at this time.
+### Fixed
+
+- Empty content no longer causes a null pointer exception in the sectionize rule
 
 ## [1.0.1] - 2025-04-08
 
