@@ -47,7 +47,15 @@
     "docs": "http-server docs"
   },
   "jest": {
-    "preset": "ts-jest"
+    "preset": "ts-jest",
+    "transform": {
+      "^.+\\.tsx?$": [
+        "ts-jest",
+        {
+          "tsconfig": "tests/tsconfig.json"
+        }
+      ]
+    }
   },
   "engines": {
     "node": ">=12",

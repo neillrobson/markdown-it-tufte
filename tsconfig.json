@@ -1,20 +1,19 @@
 {
   "compilerOptions": {
     "target": "es6",
-    // module is overridden from the build:esm/build:cjs scripts
+    "lib": ["es2020"],
     "module": "es2015",
     "esModuleInterop": true,
     "noImplicitAny": true,
     "strict": true,
     "moduleResolution": "bundler",
     "sourceMap": true,
-    // outDir is overridden from the build:esm/build:cjs scripts
     "outDir": "dist",
     "rootDir": "src",
-    // Type roots allows it to be included in a yarn workspace
     "typeRoots": ["./node_modules/@types", "./types", "../../node_modules/@types"],
+    // Keep global ambient types out of src; test runner types live in tests/tsconfig.json
+    "types": [],
     "resolveJsonModule": true,
-    // Ignore node_modules, etc.
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },

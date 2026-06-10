@@ -1,0 +1,10 @@
+{
+  // Extends the root config but scopes test-runner type definitions (jest, node)
+  // to the tests directory so they don't leak into src.
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "..",
+    "types": ["jest", "node"]
+  },
+  "include": ["**/*", "../src/**/*"]
+}
