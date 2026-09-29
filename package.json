@@ -58,8 +58,8 @@
     }
   },
   "engines": {
-    "node": ">=12",
-    "npm": ">=6"
+    "node": ">=26",
+    "npm": ">=12"
   },
   "peerDependencies": {
     "markdown-it": "^15"
@@ -94,5 +94,8 @@
     "rollup": "^4.30.1",
     "ts-jest": "^29.2.5",
     "typescript": "^5.7.3"
+  },
+  "allowScripts": {
+    "fsevents@2.3.2": true
   }
 }

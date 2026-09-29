@@ -212,7 +212,7 @@ To-do items that are not features or functional changes.
 
 - [x] Re-format README (line wrapping, markdown-lint fixes)
 - [x] Upgrade markdown-it dependency
-- [ ] Upgrade Node
+- [x] Upgrade Node
 - [ ] Move to BiomeJS
 
 ## Development Workflow
