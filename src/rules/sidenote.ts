@@ -1,8 +1,4 @@
-import type MarkdownIt from "markdown-it"
-import type StateBlock from "markdown-it/lib/rules_block/state_block.js"
-import type StateCore from "markdown-it/lib/rules_core/state_core.js"
-import type StateInline from "markdown-it/lib/rules_inline/state_inline.js"
-import type Token from "markdown-it/lib/token.js"
+import type { MarkdownIt, StateBlock, StateCore, StateInline, Token } from "markdown-it"
 
 /*
  * Sidenotes are managed using three rules:
@@ -25,8 +21,40 @@ import type Token from "markdown-it/lib/token.js"
  * markup for the label/checkbox-input toggle.
  */
 
+interface Meta {
+  blocks: Token[]
+  label: string | number
+  margin: boolean
+}
+
+interface FootnoteDef {
+  tokens: Token[]
+  margin: boolean
+}
+
+interface Env {
+  footnotes?: { defs?: Record<string, FootnoteDef> }
+}
+
+function peekDefs(env: unknown) {
+  return (env as Env).footnotes?.defs
+}
+
+function getDefs(env: unknown) {
+  const e = env as Env
+  e.footnotes ??= {}
+  e.footnotes.defs ??= {}
+  return e.footnotes.defs
+}
+
+// token.meta is typed as Record<string, unknown> | null; sidenote_ref tokens
+// always carry a Meta
+function getMeta(token: Token) {
+  return token.meta as unknown as Meta
+}
+
 function render_sidenote_ref(tokens: Token[], idx: number) {
-  const { label, margin } = tokens[idx].meta
+  const { label, margin } = getMeta(tokens[idx])
 
   if (margin) {
     return `<label for="mn-${label}" class="margin-toggle">&#8853;</label><input id="mn-${label}" type="checkbox" class="margin-toggle">`
@@ -77,8 +105,7 @@ export default function footnote_plugin(md: MarkdownIt) {
     // ### STORE ###
     // #############
 
-    if (!state.env.footnotes) state.env.footnotes = {}
-    if (!state.env.footnotes.defs) state.env.footnotes.defs = {}
+    const defs = getDefs(state.env)
     const label = state.src.slice(start + 2, pos - 2)
 
     // #############
@@ -151,7 +178,7 @@ export default function footnote_plugin(md: MarkdownIt) {
       margin = true
       footnoteTokens[0].children.shift()
     }
-    state.env.footnotes.defs[`:${label}`] = {
+    defs[`:${label}`] = {
       tokens: footnoteTokens,
       margin
     }
@@ -171,7 +198,8 @@ export default function footnote_plugin(md: MarkdownIt) {
     // should be at least 4 chars - "[^x]"
     if (start + 3 > max) return false
 
-    if (!state.env.footnotes || !state.env.footnotes.defs) return false
+    const defs = peekDefs(state.env)
+    if (!defs) return false
     if (state.src.charCodeAt(start) !== 0x5b /* [ */) return false
     if (state.src.charCodeAt(start + 1) !== 0x5e /* ^ */) return false
 
@@ -190,12 +218,13 @@ export default function footnote_plugin(md: MarkdownIt) {
     pos++
 
     const label = state.src.slice(start + 2, pos - 1)
-    if (typeof state.env.footnotes.defs[`:${label}`] === "undefined") return false
+    const def = defs[`:${label}`]
+    if (typeof def === "undefined") return false
 
     if (!silent) {
       const token = state.push("sidenote_ref", "", 0)
-      const { tokens, margin } = state.env.footnotes.defs[`:${label}`]
-      token.meta = { blocks: tokens, label, margin }
+      const { tokens, margin } = def
+      token.meta = { blocks: tokens, label, margin } satisfies Meta
     }
 
     state.pos = pos
@@ -219,9 +248,8 @@ export default function footnote_plugin(md: MarkdownIt) {
     if (labelEnd < 0) return false
 
     if (!silent) {
-      if (!state.env.footnotes) state.env.footnotes = {}
-      if (!state.env.footnotes.defs) state.env.footnotes.defs = {}
-      const label = Object.keys(state.env.footnotes.defs).length
+      const defs = getDefs(state.env)
+      const label = Object.keys(defs).length
       const inline = new state.Token("inline", "", 0)
       inline.content = state.src.slice(labelStart, labelEnd).trim()
       inline.children = []
@@ -234,10 +262,10 @@ export default function footnote_plugin(md: MarkdownIt) {
 
       // We only add this to "defs" to maintain the appropriate footnote count.
       // The pointers to data are just for code consistency.
-      state.env.footnotes.defs[`:${label}`] = { tokens, margin }
+      defs[`:${label}`] = { tokens, margin }
 
       const token = state.push("sidenote_ref", "", 0)
-      token.meta = { blocks: tokens, label, margin }
+      token.meta = { blocks: tokens, label, margin } satisfies Meta
     }
 
     state.pos = labelEnd + 1
@@ -275,7 +303,7 @@ export default function footnote_plugin(md: MarkdownIt) {
           0
         ) {
           const refToken = token.children[refIdx]
-          const { blocks, margin } = refToken.meta
+          const { blocks, margin } = getMeta(refToken)
 
           const newInline = new state.Token("inline", "", 0)
           newInline.children = token.children.splice(0, refIdx + 1)

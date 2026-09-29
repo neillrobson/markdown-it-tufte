@@ -1,4 +1,4 @@
-import type MarkdownIt from "markdown-it"
+import type { MarkdownIt } from "markdown-it"
 import newthought_plugin from "./rules/newthought"
 import sidenote_plugin from "./rules/sidenote"
 import sectionize_plugin from "./rules/sectionize"

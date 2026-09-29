@@ -1,5 +1,4 @@
-import type MarkdownIt from "markdown-it/lib"
-import type StateInline from "markdown-it/lib/rules_inline/state_inline.js"
+import type { Delimiter, MarkdownIt, StateInline } from "markdown-it"
 
 // ^^new thought^^
 //
@@ -54,7 +53,7 @@ function newthought_tokenize(state: StateInline, silent: boolean) {
   return true
 }
 
-function postProcess(state: StateInline, delimiters: StateInline.Delimiter[]) {
+function postProcess(state: StateInline, delimiters: Delimiter[]) {
   let token
   const loneMarkers = []
   const max = delimiters.length

@@ -1,5 +1,4 @@
-import type MarkdownIt from "markdown-it"
-import type StateCore from "markdown-it/lib/rules_core/state_core.js"
+import type { MarkdownIt, StateCore } from "markdown-it"
 
 /*
  * Inspired by Alexs7zzh on Github
@@ -42,10 +41,10 @@ export default function figure_plugin(md: MarkdownIt) {
       if (!caption) continue
 
       const inline = new state.Token("inline", "", 0)
-      inline.content = caption
+      inline.content = String(caption)
       inline.block = true
       const text = new state.Token("text", "", 0)
-      text.content = caption
+      text.content = String(caption)
       inline.children = [text]
 
       const figcaption_open = new state.Token("figcaption_open", "figcaption", 1)
