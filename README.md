@@ -175,6 +175,11 @@ Half-baked thoughts and nice-to-haves that may be added in the future.
 
 To-do items that are not features or functional changes.
 
+- [ ] Re-format README (line wrapping, markdown-lint fixes)
+- [ ] Upgrade markdown-it dependency
+- [ ] Upgrade Node
+- [ ] Move to BiomeJS
+
 ## Development Workflow
 
 **Setup**:
