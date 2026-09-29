@@ -1,0 +1,5 @@
+{
+	"MD013": { "line_length": 100 },
+	// "More information can be found [here]()" is fine
+	"MD059": { "prohibited_texts": ["click here", "link", "more"] }
+}
